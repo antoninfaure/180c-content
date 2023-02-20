@@ -19,22 +19,22 @@ jobs:
       - name: execute py script # run main.py
         run: python move_imgs.py
         
+      - name: go to node-repo
+        run: |
+          mkdir node-repo
+          cd node-repo
+          ls 
+          
       - name: 'cloning node repo'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.API_TOKEN_GITHUB }}
           repository: antoninfaure/node-180
-          path: node-repo
           
       - name: 'move imgs'
         run: |
-          cp -fr static/ node-repo
+          cp -fr ../static/ .
           
-      - name: go to node-repo
-        run: |
-          cd node-repo
-          ls 
-        
       - name: 'commit'
         run: |
           
