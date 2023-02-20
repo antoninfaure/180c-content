@@ -33,7 +33,10 @@ jobs:
       - name: 'move imgs'
         run: |
           cp -fr static/ node-repo
-
+          
+      - name: go to node-repo
+        run: cd node repo
+        
       - name: 'commit and push'
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
@@ -44,9 +47,7 @@ jobs:
           git config --unset-all http.https://github.com/.extraheader
           git add .
           git commit -m "release"
-          git push origin release
-        working-directory: 'node-repo'
-          
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
@@ -55,8 +56,8 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           base: main
-          path: antoninfaure/node-180
           branch: release
+          brach-suffix: random
           delete-branch: true
           title: '[Example] Update report'
           body: |
