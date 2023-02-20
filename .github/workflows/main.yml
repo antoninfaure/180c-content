@@ -77,15 +77,6 @@ jobs:
       - name: 'commit and push'
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
-        run: |
-          git diff-index --quiet HEAD ||
-          then
-              set -e
-              git commit -am "content update on - $(date)"
-              git push origin main
-          else
-              set -e
-              echo "No changes since last run"
-          fi
+        run: git diff-index --quiet HEAD || {git commit -am "content update on - $(date)"; git push origin main }
         working-directory: 'node-repo'
 
