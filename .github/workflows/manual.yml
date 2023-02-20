@@ -48,3 +48,4 @@ jobs:
         run: |
           git config --unset-all http.https://github.com/.extraheader
           git push origin release
+        working-directory: 'node-repo'
