@@ -57,7 +57,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           base: main
           branch: release
-          brach-suffix: random
+          branch-suffix: random
           delete-branch: true
           title: '[Example] Update report'
           body: |
