@@ -56,21 +56,15 @@ jobs:
         run: |
           cp -fr static node-repo
           
-      - name: 'commit'
+      - name: 'commit and push'
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/antoninfaure/node-180
+          git config --unset-all http.https://github.com/.extraheader
           git add .
-          git commit -a
+          git diff-index --quiet HEAD || git commit -m 'Update content' | git push origin main
         working-directory: 'node-repo'
 
-      - name: 'Push'
-        env:
-          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
-        run: |
-          git config --unset-all http.https://github.com/.extraheader
-          git push origin main
-        working-directory: 'node-repo'
