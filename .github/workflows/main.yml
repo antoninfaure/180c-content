@@ -78,8 +78,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
-          set +e  # Grep succeeds with nonzero exit codes to show results.
-          if git status | grep -q modified
+          git diff-index --quiet HEAD ||
           then
               set -e
               git commit -am "content update on - $(date)"
