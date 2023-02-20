@@ -19,7 +19,6 @@ jobs:
       - name: execute py script # run main.py
         run: python move_imgs.py
         
-      - uses: actions/checkout@v2
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
