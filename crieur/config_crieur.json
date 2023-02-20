@@ -52,6 +52,10 @@
             "code": "takeaway",
             "name": "Takeaway",
             "icon": "<i class='fas fa-shipping-fast'></i>"
+        }, {
+            "code": "delivery",
+            "name": "Livraison",
+            "icon": "<i class='fas fa-car-side'></i>"
         }
     ],
     "links": [
@@ -74,6 +78,10 @@
         {
             "social": "twitter",
             "icon": "<i class='fab fa-twitter-square'></i>"
+        },
+        {
+            "social": "tiktok",
+            "icon": "<i class='fab fa-tiktok'></i>"
         }
     ]
 }
