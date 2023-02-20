@@ -25,11 +25,7 @@ jobs:
           token: ${{ secrets.API_TOKEN_GITHUB }}
           repository: antoninfaure/node-180
           path: node-repo
-
-      - name: Create release branch
-        run: git checkout -b release
-        working-directory: 'node-repo'
-
+          
       - name: 'move imgs'
         run: |
           cp -fr static/ node-repo
