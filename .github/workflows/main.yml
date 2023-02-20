@@ -65,7 +65,8 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/antoninfaure/node-180
           git config --unset-all http.https://github.com/.extraheader
           git add .
-          
+        working-directory: 'node-repo'
+        
       - name: 'commit and push'
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
