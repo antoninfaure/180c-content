@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - main
-  
 
 jobs:
   update-db:
@@ -26,24 +25,47 @@ jobs:
           
       - name: execute py script
         run: python update_crieur.py
-  copy-to-app:
+  
+  copy-files:
     runs-on: ubuntu-latest
     steps:
-    - name : copy imgs in folder
-      
-    - uses: actions/checkout@v2
-    - name: Pushes to another repository
-      uses: cpina/github-action-push-to-another-repository@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-directory: 'imgs'
-        destination-github-username: 'antoninfaure'
-        destination-repository-name: 'node-180'
-        user-email: action@github.com
-        target-branch: new_content
-        target-directory: 'static/crieur'
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner.
         
-  merge-request:
-    needs: copy-to-app
-    runs-on: ubuntu-latest
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: execute py script # run main.py
+        run: python move_imgs.py
+          
+      - name: 'cloning node repo'
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          repository: antoninfaure/node-180
+          path: node-repo
+          
+      - name: 'move imgs'
+        run: |
+          cp -fr static node-repo
+          
+      - name: 'commit'
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/antoninfaure/node-180
+          git add .
+          git commit -m "release"
+        working-directory: 'node-repo'
+
+      - name: 'Push'
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+          git config --unset-all http.https://github.com/.extraheader
+          git push origin main
+        working-directory: 'node-repo'
