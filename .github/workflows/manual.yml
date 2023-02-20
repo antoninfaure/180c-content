@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual Update Crieur
+name: Manual Update Files Crieur
 on:
   workflow_dispatch:
 
