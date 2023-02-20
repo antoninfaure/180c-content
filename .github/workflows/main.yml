@@ -56,7 +56,7 @@ jobs:
         run: |
           cp -fr static node-repo
           
-      - name: 'commit and push'
+      - name: 'add changes'
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
@@ -65,6 +65,11 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/antoninfaure/node-180
           git config --unset-all http.https://github.com/.extraheader
           git add .
+          
+      - name: 'commit and push'
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
           set +e  # Grep succeeds with nonzero exit codes to show results.
           if git status | grep -q modified
           then
