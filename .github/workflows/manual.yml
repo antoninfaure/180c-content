@@ -19,6 +19,14 @@ jobs:
       - name: execute py script # run main.py
         run: python move_imgs.py
         
+      - name: create new branch in destination
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          branch: 'new-content'
+          sha: '${{ github.event.pull_request.head.sha }}'
+          
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
@@ -28,5 +36,5 @@ jobs:
           destination-github-username: 'antoninfaure'
           destination-repository-name: 'node-180'
           user-email: action@github.com
-          target-branch: new_content
+          target-branch: new-content
           target-directory: 'static/crieur'
