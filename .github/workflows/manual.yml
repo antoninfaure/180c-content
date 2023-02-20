@@ -32,7 +32,7 @@ jobs:
 
       - name: 'move imgs'
         run: |
-          cp -fr static/ node-repo/static
+          cp -fr static/ node-repo
 
       - name: 'commit'
         run: |
