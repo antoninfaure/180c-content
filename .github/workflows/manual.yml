@@ -33,7 +33,7 @@ jobs:
       - name: 'move imgs'
         run: |
           rm -r node-repo/static
-          mv static/ -f node-repo/
+          mv -f static/ node-repo/
 
       - name: 'commit'
         run: git commit -m "release"
