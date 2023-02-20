@@ -48,30 +48,21 @@ jobs:
         working-directory: 'node-repo'
         
   pull-request:
-    needs: copy-files
     runs-on: ubuntu-latest
     steps:
-    - name: 'cloning node repo'
-      uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.API_TOKEN_GITHUB }}
-        repository: antoninfaure/node-180
-    
-    - name: Create Pull Request
-      run: |
-        PAYLOAD=$(cat <<EOF
-          {
-            "title": "Update content",
-            "body": "Update content",
-            "head": "release",
-            "base": "main"
-          }
-        EOF
-        )
-        curl
-          https://api.github.com/repos/antoninfaure/180-node/pulls \
-          --header "Authorization: token ${TOKEN}" \
-          -H "Content-Type:application/json" \
-          -d "$PAYLOAD"
-      env:
-        TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner.
+        with:
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          repository: antoninfaure/node-180
+          ref: release
+          
+      - name: create pr
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          pr_title: "Pulling ${{ github.ref }} into main"
+          pr_body: "Update content"
+          pr_reviewer: "antoninfaure"
+          pr_draft: true
+          github_token: ${{ secrets.API_TOKEN_GITHUB }}
