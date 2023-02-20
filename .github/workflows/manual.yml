@@ -65,6 +65,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           base: release
+          branch: pr
           branch-suffix: random
           delete-branch: true
           title: '[Example] Update report'
