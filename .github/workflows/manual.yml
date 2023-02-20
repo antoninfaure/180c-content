@@ -57,12 +57,7 @@ jobs:
         token: ${{ secrets.API_TOKEN_GITHUB }}
         repository: antoninfaure/node-180
     
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
-      with:
-        token: ${{ secrets.API_TOKEN_GITHUB }}
-        commit-message: Update content
-        committer: GitHub <noreply@github.com>
-        author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-        branch: release
-        delete-branch: true
+    - name: create pull request
+      run: gh pr create -B main -H release --title 'Merge release into main' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
