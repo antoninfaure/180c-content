@@ -31,9 +31,14 @@ jobs:
           token: ${{ secrets.API_TOKEN_GITHUB }}
           repository: antoninfaure/node-180
           
+      - name: 'check'
+        run: ls
+          
       - name: 'move imgs'
         run: |
-          cp -fr ../static/ .
+          cd ..
+          cp -fr static/ node-repo
+          cd node-repo
           
       - name: 'commit'
         run: |
