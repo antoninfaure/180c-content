@@ -48,6 +48,7 @@ jobs:
         working-directory: 'node-repo'
         
   pull-request:
+    needs: copy-files
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
