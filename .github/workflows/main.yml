@@ -73,6 +73,7 @@ jobs:
         run: |
           git add .
           git remote show origin
+        working-directory: 'node-repo'
         
       - name: 'commit and push'
         env:
