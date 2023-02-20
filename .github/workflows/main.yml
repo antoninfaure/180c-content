@@ -64,7 +64,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/antoninfaure/node-180
           git add .
-          git commit -m "release"
+          git commit -a
         working-directory: 'node-repo'
 
       - name: 'Push'
