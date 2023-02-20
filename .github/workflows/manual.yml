@@ -31,7 +31,9 @@ jobs:
         working-directory: 'node-repo'
 
       - name: 'move imgs'
-        run: mv static/ -f node-repo/
+        run: |
+          rm -r node-repo/static
+          mv static/ -f node-repo/
 
       - name: 'commit'
         run: git commit -m "release"
