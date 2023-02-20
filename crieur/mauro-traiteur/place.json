@@ -1,8 +1,7 @@
 {
     "available": true,
     "name": "Mauro Traiteur",
-    "banner": "mauro-traiteur-banner.jpg",
-    "front": "mauro-traiteur-front.jpg",
+    "banner": "mauro-banner.jpg",
     "style": "Traiteur italien",
     "types": [
         "traiteur"
