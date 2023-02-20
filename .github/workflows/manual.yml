@@ -62,7 +62,7 @@ jobs:
       with:
         token: ${{ secrets.API_TOKEN_GITHUB }}
         commit-message: Update content
-        committer: ${{ github.actor }} <${{ github.actor }}
-        author: actions@github.com>
+        committer: GitHub <noreply@github.com>
+        author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
         branch: release
         delete-branch: true
