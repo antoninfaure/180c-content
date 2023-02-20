@@ -19,22 +19,15 @@ jobs:
       - name: execute py script # run main.py
         run: python move_imgs.py
         
-      - name: create new branch in destination
-        uses: peterjgrainger/action-create-branch@v2.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: 'cloning node repo'
+        uses: actions/checkout@v2
         with:
-          branch: 'new-content'
-          sha: '${{ github.event.pull_request.head.sha }}'
-          
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'temp'
-          destination-github-username: 'antoninfaure'
-          destination-repository-name: 'node-180'
-          user-email: action@github.com
-          target-branch: new-content
-          target-directory: 'static/crieur'
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          repository: antoninfaure/node-180
+          path: node-repo
+      
+      - name: Create release branch
+        run: git checkout -b release
+
+      - name: Push new branch
+        run: git push origin release

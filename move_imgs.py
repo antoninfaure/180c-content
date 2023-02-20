@@ -3,7 +3,7 @@ import shutil
 from os import path
 
 src = path.join('.', 'crieur')
-dest = path.join('.', 'temp')
+dest = path.join('.', 'static/crieur')
 
 if path.exists(dest):
     shutil.rmtree(dest)
