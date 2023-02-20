@@ -1,0 +1,49 @@
+name: Update Crieur
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+  
+
+jobs:
+  update-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner.
+        
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: execute py script
+        run: python update_crieur.py
+  copy-to-app:
+    runs-on: ubuntu-latest
+    steps:
+    - name : copy imgs in folder
+      
+    - uses: actions/checkout@v2
+    - name: Pushes to another repository
+      uses: cpina/github-action-push-to-another-repository@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source-directory: 'imgs'
+        destination-github-username: 'antoninfaure'
+        destination-repository-name: 'node-180'
+        user-email: action@github.com
+        target-branch: new_content
+        target-directory: 'static/crieur'
+        
+  merge-request:
+    needs: copy-to-app
+    runs-on: ubuntu-latest
