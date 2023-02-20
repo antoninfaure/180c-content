@@ -63,10 +63,8 @@ jobs:
           commit-message: Update report
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
           base: main
           branch: release
-          branch-suffix: random
           delete-branch: true
           title: '[Example] Update report'
           body: |
