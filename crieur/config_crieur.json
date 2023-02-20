@@ -51,11 +51,11 @@
         {
             "code": "takeaway",
             "name": "Takeaway",
-            "icon": "<i class='fas fa-shipping-fast'></i>"
+            "icon": "<i class='fa-solid fa-paper-plane'></i>"
         }, {
             "code": "delivery",
             "name": "Livraison",
-            "icon": "<i class='fas fa-car-side'></i>"
+            "icon": "<i class='fas fa-shipping-fast'></i>"
         }
     ],
     "links": [
