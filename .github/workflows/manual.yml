@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Test
+name: Manual Update Crieur
 on:
   workflow_dispatch:
 
