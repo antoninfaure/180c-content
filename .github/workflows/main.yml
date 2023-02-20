@@ -60,6 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
+          git remote show origin
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/antoninfaure/node-180
@@ -69,7 +70,9 @@ jobs:
       - name: 'add changes'
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
-        run: git add .
+        run: |
+          git add .
+          git remote show origin
         
       - name: 'commit and push'
         env:
