@@ -37,8 +37,10 @@ jobs:
       - name: 'move imgs'
         run: |
           cd ..
-          cp -fr static/ node-repo
+          ls
+          cp -fr static node-repo
           cd node-repo
+          ls
           
       - name: 'commit'
         run: |
