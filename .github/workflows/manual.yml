@@ -64,8 +64,8 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          base: release
-          branch: pr
+          base: main
+          branch: release
           branch-suffix: random
           delete-branch: true
           title: '[Example] Update report'
