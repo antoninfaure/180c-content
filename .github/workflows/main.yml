@@ -24,6 +24,11 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script
+        env:
+          DB_USER: ${{  secrets.DB_USER }}
+          DB_PASSWORD: ${{  secrets.DB_PASSWORD }}
+          DB_URL: ${{  secrets.DB_URL }}
+          DB_NAME: ${{  secrets.DB_NAME }}
         run: python update_crieur.py
   
   copy-files:
