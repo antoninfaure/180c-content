@@ -58,12 +58,20 @@ jobs:
         repository: antoninfaure/node-180
     
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
-      with:
-          commit-message: Update content
-          title: Update content
-          body: Update content
-          base: main
-          labels: automated-pr
-          branch: release
-          delete-branch: true
+      run: |
+        PAYLOAD=$(cat <<EOF
+          {
+            "title": "Update content",
+            "body": "Update content",
+            "head": "release",
+            "base": "main"
+          }
+        EOF
+        )
+        curl
+          https://api.github.com/repos/antoninfaure/180-node/pulls \
+          --header "Authorization: token ${TOKEN}" \
+          -H "Content-Type:application/json" \
+          -d "$PAYLOAD"
+      env:
+        TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
