@@ -12,7 +12,7 @@ def check_place(code, data):
     result = {
         'code': code
     }
-    f = open(path.join('.', 'crieur', 'config.json'), "r", encoding='utf8')
+    f = open(path.join('.', 'crieur', 'config_crieur.json'), "r", encoding='utf8')
     config_crieur = json.load(f)
 
     if not data['name']: raise Exception("Missing name")
@@ -27,12 +27,12 @@ def check_place(code, data):
     if 'front' in data and data['front']:
         if (not path.exists(path.join('.', 'crieur', code, 'images', data['front']))):
             print_ignore(f"[{code}] error: {data['front']} file doesn't exists, solution: front ignored")
-        else : result['front'] = f'images/crieur/{code}/{data["front"]}'
+        else : result['front'] = f'crieur/{code}/{data["front"]}'
 
     if 'banner' in data and data['banner']:
         if (not path.exists(path.join('.', 'crieur', code, 'images', data['banner']))):
             print_ignore(f"[{code}] error: {data['banner']} file doesn't exists, solution: banner ignored")
-        else: result['banner'] = f'images/crieur/{code}/{data["banner"]}'
+        else: result['banner'] = f'crieur/{code}/{data["banner"]}'
 
     if not data['types'] : raise Exception("Missing types")
     allowed_types = list(map(lambda x: x['code'], config_crieur['types']))
@@ -89,7 +89,7 @@ def check_place(code, data):
                     print_ignore(f"[{code}] error: {top['photo']} file doesn't exists, solution: top photo ignored")
                     valid_top_photo = False
                 if (valid_top_photo == True):
-                    top['photo'] = f'images/crieur/{code}/{top["photo"]}'
+                    top['photo'] = f'crieur/{code}/{top["photo"]}'
                 else : del top['photo']
             place_tops.append(top)
         result['tops'] = place_tops
