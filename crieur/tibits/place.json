@@ -1,8 +1,8 @@
 {
     "available": true,
     "name": "Tibits",
-    "banner": "tibits-banner.jpeg",
-    "front": "tibits-front.jpg",
+    "banner": "tibits-banner.webp",
+    "front": "tibits-front.webp",
     "style": "Buffet végétarien/vegan",
     "types": [
         "restaurant",
@@ -116,12 +116,12 @@
     "tops": [
         {
             "name": "Goulasch Stroganoff avec planted",
-            "photo": "tibits-goulasch.jpg",
+            "photo": "goulasch.webp",
             "price": "CHF 4.60.- par 100 gr"
         },
         {
             "name": "Tiramisu à la framboise",
-            "photo": "tibits-tiramisu.jpg",
+            "photo": "tiramisu.webp",
             "price": "CHF 4.60.- par 100 gr"
         }
     ]

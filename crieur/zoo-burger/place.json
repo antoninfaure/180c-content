@@ -1,8 +1,8 @@
 {
     "available": true,
     "name": "Zoo Burger",
-    "banner": "zoo-burger-banner.jpg",
-    "front": "zoo-burger-front.jpeg",
+    "banner": "zoo-burger-banner.webp",
+    "front": "zoo-burger-front.webp",
     "style": "Burger",
     "types": [
         "restaurant",

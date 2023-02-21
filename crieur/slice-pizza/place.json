@@ -1,8 +1,8 @@
 {
     "available": true,
     "name": "Slice Pizza",
-    "banner": "slice-banner.jpg",
-    "front": "slice-front.jpg",
+    "banner": "slice-banner.webp",
+    "front": "slice-front.webp",
     "style": "Pizzeria",
     "types": [
         "restaurant"

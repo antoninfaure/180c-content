@@ -1,8 +1,8 @@
 {
     "available": true,
     "name": "Brasserie du château",
-    "banner": "brasserie-banner.jpeg",
-    "front": "brasserie-front.jpg",
+    "banner": "brasserie-banner.webp",
+    "front": "brasserie-front.webp",
     "style": "Bières & Pizzas",
     "types": [
         "restaurant",
