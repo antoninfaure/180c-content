@@ -4,6 +4,32 @@ Bienvenue sur le Git qui gére le contenu du site de 180°C !
 
 Pour toute question, contactez [@antonin_faure](@antonin_faure) sur Telegram ;)
 
+## Table des matières
+ - [General](#general) 
+    - [Préface - How to Git](#préface---how-to-git) 
+    - [Cloner ce Git](#cloner-ce-git)
+    - [Organisation](#organisation)
+    - [Fonctionnement](#fonctionnement)
+- [Crieur](#crieur)
+    - [Ajouter un établissement](#ajouter-un-établissement)
+        - [`place.json`](#placejson)
+            - [Variables](#variables)
+                - [Paramètre `top`](#paramètres-top)
+                - [Paramètres `link`](#paramètres-link)
+                - [Paramètres `location`](#paramètres-location)
+        - [Ajouter des images](#ajouter-des-images)
+    - [Modifier un établissement](#supprimer-un-établissement)
+    - [Supprimer un établissement](#supprimer-un-établissement)
+    - [Paramètres du Crieur](#paramètres-du-crieur)
+        - [Types](#types)
+            - [Paramètres](#paramètres-types)
+        - [Tags](#tags)
+            - [Paramètres](#paramètres-tags)
+        - [Links](#links)
+            - [Paramètres](#paramètres-links)
+        - [priceTag](#pricetag)
+        - [Ajouter un icône](#ajouter-un-icône)
+
 ## General
 
 ### Préface - How to Git
@@ -119,30 +145,30 @@ Un exemple `place_template.json` peut être trouvé dans le dossier `crieur`.
 | `banner` | `false` | text | Nom du fichier de l'image de la bannière de la page (en haut) |
 | `front` | `false` | text | Nom du fichier de l'image de la devanture (affichée sur la page et dans le slider des établissements) |
 | `description`| `false` | text | Description de l'établissement |
-| `types`| `true` | list of text | Liste des types de l'établissemnt (au moins un) (voir [Paramètres du Crieur - Types](####Types)) ex : ["restaurant", "bar"] |
-| `priceTag`| `true` | int | Catégorie de prix de l'établissemnt (voir [Paramètres du Crieur - priceTag](####priceTag)) ex : 2 |
+| `types`| `true` | list of text | Liste des types de l'établissemnt (au moins un) (voir [Paramètres du Crieur - Types](#types)) ex : ["restaurant", "bar"] |
+| `priceTag`| `true` | int | Catégorie de prix de l'établissemnt (voir [Paramètres du Crieur - priceTag](#pricetag)) ex : 2 |
 | `price`| `true` | text | Valeur textuelle au choix qui décrit la fourchette de prix. ex : "~25 CHF" ou "10-15 CHF"  |
-| `tags`| `false` | list of text | Liste des tags de l'établissemnt (voir [Paramètres du Crieur - Tags](####Tags)) ex : ["vege", "takeaway"] |
+| `tags`| `false` | list of text | Liste des tags de l'établissemnt (voir [Paramètres du Crieur - Tags](####tags)) ex : ["vege", "takeaway"] |
 | `tips`| `false` | text | Paragraphe donnant des conseils/astuces |
-| `tops`| `false` | list of tops | Liste de recommandations (voir [Paramètres top](######Paramètres-top)) |
-| `links`| `false` | list of links | Liste des liens de l'établissement (voir [Paramètres link](######Paramètres-link)) |
-| `locations`| `true` | list of location | Liste des localisations de l'établissement (voir [Paramètres location](######Paramètres-location)) |
+| `tops`| `false` | list of tops | Liste de recommandations (voir [Paramètres top](#parametres-top)) |
+| `links`| `false` | list of links | Liste des liens de l'établissement (voir [Paramètres link](#parametres-link)) |
+| `locations`| `true` | list of location | Liste des localisations de l'établissement (voir [Paramètres location](#parametres-location)) |
 
 
-###### Paramètres top
+###### Paramètres `top`
 | Nom | Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | `social` | `true` | text | Nom du réseau social. ex : "facebook"  |
 | `url`| `true` | text | Lien |
 
-###### Paramètres link
+###### Paramètres `link`
 | Nom | Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | `social` | `true` | text | Nom du réseau social. ex : "facebook"  |
 | `url`| `true` | text | Lien |
 
 
-###### Paramètres location
+###### Paramètres `location`
 | Nom | Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | `adresse` | `true` | text | Nom de la recommandation. ex : "Tiramisu"  |
@@ -209,32 +235,39 @@ Les paramètres du Crieur sont modifiables dans le fichier `config_crieur.json`.
 #### Types
 Liste les différents types possibles d'établissement. Utilisé notamment pour les filtres de la carte.
 
-##### Variables
+##### Paramètres types
 | Nom | Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | `code` | `true` | text | Code utilisé pour référencer le type (celui à mettre dans `place.json`)  |
 | `name` | `true` | text | Nom affiché  |
-| `icon` | `true` | text | Code HTML de l'icône (voir [Ajouter un icône](####Ajouter-un-icône)) |
+| `icon` | `true` | text | Code HTML de l'icône (voir [Ajouter un icône](#ajouter-un-icone)) |
 
 #### Tags
 Liste les différents tags possibles d'établissement.
 
-##### Variables
+##### Paramètres tags
 | Nom | Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | `code` | `true` | text | Code utilisé pour référencer le tag (celui à mettre dans `place.json`)  |
 | `name` | `true` | text | Nom affiché  |
-| `icon` | `true` | text | Code HTML de l'icône (voir [Ajouter un icône](####Ajouter-un-icône)) |
+| `icon` | `true` | text | Code HTML de l'icône (voir [Ajouter un icône](#ajouter-un-icone)) |
 
 #### Links
 Liste les différents réseaux sociaux possibles.
 
-##### Variables
+##### Paramètres links
 | Nom | Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | `social` | `true` | text | Code utilisé pour référencer le social (celui à mettre dans `place.json`)  |
-| `icon` | `true` | text | Code HTML de l'icône (voir [Ajouter un icône](####Ajouter-un-icône)) |
+| `icon` | `true` | text | Code HTML de l'icône (voir [Ajouter un icône](#ajouter-un-icone)) |
 
+#### priceTag
+Liste les différentes fourchettes de prix possibles.
+
+- 1 = $
+- 2 = $$
+- 3 = $$$
+- 4 = $$$$
 
 #### Ajouter un icône 
 
