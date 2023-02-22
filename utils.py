@@ -15,10 +15,10 @@ def check_place(code, data):
     f = open(path.join('.', 'crieur', 'config_crieur.json'), "r", encoding='utf8')
     config_crieur = json.load(f)
 
-    if not data['name']: raise Exception("Missing name")
+    if 'name' not in data or not data['name']: raise Exception("Missing name")
     result['name'] = data['name']
 
-    if 'available' not in data : raise Exception("Missing available")
+    if 'available' not in data or 'available' not in data : raise Exception("Missing available")
     result['available'] = data['available']
 
     if 'style' not in data or not data['style'] : raise Exception("Missing style")
@@ -34,14 +34,14 @@ def check_place(code, data):
             print_ignore(f"[{code}] error: {data['banner']} file doesn't exists, solution: banner ignored")
         else: result['banner'] = f'crieur/{code}/{data["banner"]}'
 
-    if not data['types'] : raise Exception("Missing types")
+    if 'types' not in data or not data['types'] : raise Exception("Missing types")
     allowed_types = list(map(lambda x: x['code'], config_crieur['types']))
     for place_type in data['types']:
         if (place_type not in allowed_types):
             raise Exception(f"Wrong type ({place_type})")
     result['types'] = data['types']
 
-    if data['tags']:
+    if 'tags' in data and data['tags']:
         place_tags = []
         allowed_tags = list(map(lambda x: x['code'], config_crieur['tags']))
         for tag in data['tags']:
@@ -51,12 +51,12 @@ def check_place(code, data):
             place_tags.append(tag)
         result['tags'] = place_tags
     
-    if not data['description'] : raise Exception("Missing description")
+    if 'description' not in data or not data['description'] : raise Exception("Missing description")
     result['description'] = data['description']
 
     if 'tips' in data and data['tips'] : result['tips'] = data['tips']
 
-    if not data['price'] : raise Exception("Missing price")
+    if 'price' not in data or not data['price'] : raise Exception("Missing price")
     result['price'] = data['price']
     
     if not data['priceTag'] : raise Exception("Missing priceTag")
