@@ -1,4 +1,4 @@
-name: Update Crieur
+name: Update Crieur Images
 on:
   workflow_dispatch:
   push:
