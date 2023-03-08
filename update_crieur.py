@@ -46,13 +46,17 @@ for place_code, k in crieur_places_folders.items():
         continue
     
     with f:
-        place_json = json.load(f)
-        f.close()
         try:
-            place = check_place(place_code, place_json)
-            db.places.replace_one({ 'code' : place_code }, place, upsert=True)
-            added_places_codes.append(place_code)
-        except Exception as e:
+            place_json = json.load(f)
+            f.close()
+            try:
+                place = check_place(place_code, place_json)
+                db.places.replace_one({ 'code' : place_code }, place, upsert=True)
+                added_places_codes.append(place_code)
+            except Exception as e:
+                print_err(f'[{place_code}] error: {e}, solution: skipped ')
+                continue
+        except ValueError as e:
             print_err(f'[{place_code}] error: {e}, solution: skipped ')
             continue
 
