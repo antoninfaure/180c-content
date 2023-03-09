@@ -1,8 +1,7 @@
 {
     "available": true,
     "name": "Legram",
-    "banner": "legram.avif",
-    "front": "legram.avif",
+    "banner": "legram.webp",
     "style": "Buffet végétarien/vegan",
     "types": [
         "restaurant",
