@@ -2,10 +2,9 @@
     "available": true,
     "name": "Legram",
     "banner": "legram.webp",
-    "style": "Buffet végétarien/vegan",
+    "style": "Bistro",
     "types": [
-        "restaurant",
-        "bar"
+        "restaurant"
     ],
     "description" : "Directement approvisionné par les producteurs et artisans de la région, sous le principe du \"zéro déchet\", le restaurant s'efforce de choisir des produits de qualité et éthiques, tout en privilégiant la proximité de ces derniers. Toute l'année, une carte atypique et pleine de saveurs est composée avec les produits de saison et des préparations faites maison. Le plus, ambiance très sympa dans le style de leur record shop qui se stue au premier étage.",
     "price": "~20 CHF",
