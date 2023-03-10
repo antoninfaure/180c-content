@@ -276,4 +276,30 @@ Les icônes utilisés sont ceux de Font Awesome (version 6.3.0) et uniquement ce
 Il suffit ensuite de copier le code HTML. Exemple : "<i class='fa-solid fa-user'></i>" (attention à bien mettre des ' ' à l'intérieur des " ")
 
 
+## Articles
 
+### Ajouter un article
+
+Rien de plus simple, il faut juste créer un fichier `.yaml` avec le code de l'article souhaité (ex: `recette-02-2023`).
+
+Attention le format .yaml est sensible aux tabulations des valeurs (voir [Synthaxe YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)).
+
+Il existe 2 types d'articles :
+- Article de contenu : article avec une page dédiée (et donc avec contenu)
+- Article de redirection : article sans page dédiée (et donc sans contenu) qui redirige juste vers une url
+
+#### Variables
+| Nom | Obligatoire | Type | Description |
+| --- | --- | --- | --- |
+| `available` | `true` | boolean | Article disponible si `true`, cachée si `false`  |
+| `title`| `true` | text | Titre de l'article |
+| `date`| `true` | text | Valeur de la date au format YYYY-MM-DDTHH:mm:ss.ms+01:00  |
+| `code`| `true` | text | Code de l'article |
+| `thumbnail` | `true` | text | Nom du fichier de l'image associée à l'article |
+| `summary`| `true` | text | Description courte de l'article |
+| `content`| `false` | text | Contenu HTML de l'article (inutile si article de redirection) |
+| `url`| `false` | text | Url de redirection (inutile si article de contenu) |
+
+### Supprimer un article
+
+Pour retirer un article rien de plus simple, il faut juste supprimer le fichier `.yaml` ou alors le rendre indisponible avec `available` égal à `false`.
