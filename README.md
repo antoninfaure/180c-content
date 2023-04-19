@@ -31,7 +31,7 @@ Pour toute question, contactez [@antonin_faure](@antonin_faure) sur Telegram ;)
         - [Ajouter un icône](#ajouter-un-icône)
 - [Articles](#articles)
     - [Ajouter un article](#ajouter-un-article)
-        - [Variables](#variables)
+        - [Variables](#variables-1)
     - [Supprimer un article](#supprimer-un-article)
 
 ## General
