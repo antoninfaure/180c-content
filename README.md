@@ -29,6 +29,10 @@ Pour toute question, contactez [@antonin_faure](@antonin_faure) sur Telegram ;)
             - [Paramètres](#paramètres-links)
         - [priceTag](#pricetag)
         - [Ajouter un icône](#ajouter-un-icône)
+- [Articles](#articles)
+    - [Ajouter un article](#ajouter-un-article)
+        - [Variables](#variables)
+    - [Supprimer un article](#supprimer-un-article)
 
 ## General
 
